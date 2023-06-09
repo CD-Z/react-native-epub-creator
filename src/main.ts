@@ -35,7 +35,7 @@ const checkFile = (path: string) => {
   var name = path.split("/").reverse()[0].toLocaleLowerCase();
   var fileExtension = [
     ".json",
-    ".html",
+    ".xhtml",
     ".xml",
     ".opf",
     ".ncx",
@@ -97,7 +97,7 @@ export default class EpubBuilder {
   ) => Promise<void>;
 
   /*
-    destinationFolderPath: destination to the folder, You could use react-native-fs RNFS.DownloadDirectoryPath
+    destinationFolderPath: destination to the folder, You could use
     */
   constructor(settings: EpubSettings, destinationFolderPath?: string) {
     this.settings = settings;
@@ -148,11 +148,6 @@ export default class EpubBuilder {
     this.settings.chapters.push(epubChapter);
   }
 
-  /*
-    destinationFolderPath: destination to the folder, You could use react-native-fs RNFS.DownloadDirectoryPath
-    RNFS: file reader settings best use with react-native-fs eg import * as RNFS from 'react-native-fs', or you could use your own filereder
-    removeTempFile(default true) set to false if there will be other changes to the epub file so it wont have to recreate the temp folder
-    */
   public async save(removeTempFile?: boolean) {
     const epubFileName = getEpubfileName(this.fileName);
     const tempOutputFile = this.tempOutputPath + epubFileName;
@@ -236,7 +231,7 @@ export default class EpubBuilder {
       }
       if (!(await exists(path))) {
         if (file.isImage) {
-          await validateDir(this.tempPath + "/OEBPS/images");
+          await validateDir(this.tempPath + "/EPUB/images");
           if (isInternalStorage(file.content)) {
             await copyFile(file.content, path);
           } else {
