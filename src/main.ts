@@ -210,7 +210,7 @@ export default class EpubBuilder {
     var overrideFiles = ["toc.ncx", "toc.html", ".opf", ".json"];
     const epubFileName = getEpubfileName(this.fileName);
     const epub = new EpubFile(this.settings);
-    const files: File = await epub.constructEpub(async (progress) => {
+    const files: File[] = await epub.constructEpub(async (progress) => {
       EpubBuilder.onProgress?.(this.dProgress, epubFileName, "constructEpub");
       if (this.onSaveProgress) {
         await this.onSaveProgress?.(progress, epubFileName, "constructEpub");

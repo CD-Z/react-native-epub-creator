@@ -45,9 +45,15 @@
     "lib/"
   ],
   "dependencies": {
+    "@cd-z/epub-constructor": "^1.2.0",
     "expo-file-system": "^15.2.2",
-    "react-native-zip-archive": "^6.0.3",
     "react-native-saf-x": "^2.2.1",
-    "@cd-z/epub-constructor": "^1.2.0"
+    "react-native-zip-archive": "^6.0.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.59.9",
+    "@typescript-eslint/parser": "^5.59.9",
+    "eslint": "^8.42.0",
+    "typescript": "^5.1.3"
   }
 }
