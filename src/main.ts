@@ -184,12 +184,15 @@ export default class EpubBuilder {
   }
 
   private async pickFolder() {
-    const folder = await openDocumentTree(true);
-    if (folder) {
-      this.outputPath = folder.uri;
-      return;
-    }
-    throw new Error("No permissions to access destination folder granted.");
+    return new Promise<void>(async (resolve, reject) => {
+      const folder = await openDocumentTree(true);
+      if (folder) {
+        this.outputPath = folder.uri;
+        resolve();
+      }
+
+      reject("No permissions to access destination folder granted.");
+    });
   }
 
   private async createTempFolder() {
