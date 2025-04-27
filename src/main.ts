@@ -1,6 +1,6 @@
 import EpubFile, {
   EpubSettings,
-} from '@cd-z/epub-constructor';
+} from '@himojuku/epub-constructor';
 import JSZip from 'jszip';
 import { File, Directory, Paths } from 'expo-file-system/next';
 
